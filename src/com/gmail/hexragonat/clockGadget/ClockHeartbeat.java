@@ -12,7 +12,7 @@ import java.util.concurrent.*;
  */
 public class ClockHeartbeat implements Runnable
 {
-	private final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+	protected final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
 	private final ClockController controller;
 
 	private ScheduledFuture<?> task;
@@ -44,6 +44,7 @@ public class ClockHeartbeat implements Runnable
 			//now.set(Calendar.HOUR, 12);
 			//now.set(Calendar.MINUTE, 25);
 			//now.set(Calendar.AM_PM, Calendar.PM);
+
 			consume(now);
 		}, null);
 

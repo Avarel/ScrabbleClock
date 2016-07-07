@@ -1,5 +1,6 @@
 package com.gmail.hexragonat.clockGadget;
 
+import com.gmail.hexragonat.clockGadget.utils.PropertiesManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,11 +33,21 @@ public class ClockApp extends Application
 		stage.setTitle("Clock Gadget");
 		stage.setScene(new Scene(root));
 		stage.initStyle(StageStyle.UNDECORATED);
-		stage.show();
+
+		// properties file
+		PropertiesManager settings = new PropertiesManager("settings.properties");
+		settings.load(getClass().getResourceAsStream("files/settings.properties"));
+
+		// settings
+		controller.setOnColor(settings.get("letter-enabled-color"));
+		controller.setOffColor(settings.get("letter-disabled-color"));
+		controller.setBackgroundColor(settings.get("background-color"));
 
 		controller.setup();
 
 		heartbeat = new ClockHeartbeat(controller);
 		heartbeat.start();
+
+		stage.show();
 	}
 }

@@ -7,9 +7,12 @@ package com.gmail.hexragonat.clockGadget;
  */
 public enum WordEnum
 {
-	$_ITS(
-			new int[]{0, 1, 2},
-			new int[]{0, 0, 0}),
+	//Really lazy storage of letter locations.
+	$_ITS(          //I  T  S
+			new int[]{0, 1, 2},     //column
+			new int[]{0, 0, 0}),    //row
+
+	// HOUR
 	H_NOON(
 			new int[]{7, 8, 9, 10},
 			new int[]{4, 4, 4, 4}), //12pm
@@ -50,7 +53,7 @@ public enum WordEnum
 			new int[]{0, 1, 2, 3, 4, 5, 6, 7},
 			new int[]{6, 6, 6, 6, 6, 6, 6, 6}), //12am
 
-
+	// MINUTES
 	M_FIVE(
 			new int[]{7, 8, 9, 10},
 			new int[]{2, 2, 2, 2}),
@@ -70,7 +73,7 @@ public enum WordEnum
 			new int[]{6, 7, 8, 9},
 			new int[]{0, 0, 0, 0}),
 
-
+	// PROGRESS
 	P_TIL(
 			new int[]{3, 4, 5},
 			new int[]{3, 3, 3}),

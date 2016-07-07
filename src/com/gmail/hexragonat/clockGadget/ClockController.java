@@ -11,6 +11,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Controller class for the JavaFX program.
  * @see ClockApp
@@ -27,8 +30,8 @@ public class ClockController
 	@FXML
 	protected Text closeLabel;
 
-	private final String offColor = "#333333ff";
-	private final String onColor = "#1a75ffff";
+	private String offColor = "#333333";
+	private String onColor = "#1a75ff";
 
 	private double xOffset = 0;
 	private double yOffset = 0;
@@ -40,6 +43,21 @@ public class ClockController
 	{
 		this.stage = stage;
 		instance = this;
+	}
+
+	public void setOnColor(String onColor)
+	{
+		this.onColor = onColor;
+	}
+
+	public void setOffColor(String offColor)
+	{
+		this.offColor = offColor;
+	}
+
+	public void setBackgroundColor(String color)
+	{
+		root.setStyle("-fx-background-color: "+color+";");
 	}
 
 	public void setup()
@@ -60,19 +78,22 @@ public class ClockController
 			finalStage.setY(event.getScreenY() - yOffset);
 		});
 
+		root.setOnMouseEntered(event -> setClockField());
+		root.setOnMouseExited(event -> resetClockField());
+
 		/*
 		 * Close button handling.
 		 */
 		closeLabel.setOnMouseEntered(event ->
 		{
-			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf("#333333"), Color.valueOf("#990000"));
+			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf(offColor), Color.valueOf("#990000"));
 			ft.play();
 
 			closeLabel.setFill(Paint.valueOf("#990000"));
 		});
 		closeLabel.setOnMouseExited(event ->
 		{
-			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf("#990000"), Color.valueOf("#333333"));
+			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf("#990000"), Color.valueOf(offColor));
 			ft.play();
 
 			closeLabel.setFill(Paint.valueOf("#333333"));
@@ -80,9 +101,58 @@ public class ClockController
 		closeLabel.setOnMouseClicked(event ->
 		{
 			ClockApp.heartbeat.stop();
-			clearAll();
+			stage.close();
 			System.exit(0);
 		});
+
+		// set all of letters color to off color
+		for (int x = 0; x <= 10; x++)
+		{
+			for (int y = 0; y <= 10; y++)
+			{
+				Text node = ClockController.instance.letterAt(x, y);
+				if (node != null)
+				{
+					node.setFill(Paint.valueOf(offColor));
+					node.setEffect(null);
+				}
+			}
+		}
+	}
+
+	public void setClockField()
+	{
+		SimpleDateFormat formatter = new SimpleDateFormat("hh:mma");
+		String formattedDate = formatter.format(new Date());
+
+		for (int i = 0; i < 7; i++)
+		{
+			Text node = letterAt(i+2,5);
+
+			if (node != null)
+			{
+				node.setStyle("-fx-font-weight: bold");
+				node.setFill(Paint.valueOf("#2c2c2c"));
+				node.setText(String.valueOf(formattedDate.charAt(i)));
+			}
+		}
+	}
+
+	public void resetClockField()
+	{
+		String original = "IRTHWDA";
+
+		for (int i = 0; i < 7; i++)
+		{
+			Text node = letterAt(i+2,5);
+
+			if (node != null)
+			{
+				node.setStyle(null);
+				node.setFill(Paint.valueOf(offColor));
+				node.setText(String.valueOf(original.charAt(i)));
+			}
+		}
 	}
 
 	/**
@@ -140,7 +210,6 @@ public class ClockController
 					{
 						if (!bool)
 						{
-
 							if (wordEnum.isActive())
 							{
 								FillTransition ft = new FillTransition(Duration.millis(1000), node, Color.valueOf(onColor), Color.valueOf(offColor));
