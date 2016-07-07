@@ -5,6 +5,11 @@ import javafx.application.Platform;
 import java.util.Calendar;
 import java.util.concurrent.*;
 
+/**
+ * Background heartbeat that grabs the time and
+ * updates the main interface.
+ * @see ClockController
+ */
 public class ClockHeartbeat implements Runnable
 {
 	private final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();

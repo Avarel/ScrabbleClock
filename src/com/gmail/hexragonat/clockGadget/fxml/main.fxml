@@ -1,652 +1,752 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<GridPane fx:id="root" alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #4d4d4d;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" alignment="center" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0"
+          style="-fx-background-color: #4d4d4d;" xmlns="http://javafx.com/javafx/8.0.60">
 	<columnConstraints>
-		<ColumnConstraints />
+		<ColumnConstraints/>
 	</columnConstraints>
 	<rowConstraints>
-		<RowConstraints maxHeight="300.0" minHeight="300.0" prefHeight="300.0" />
+		<RowConstraints maxHeight="300.0" minHeight="300.0" prefHeight="300.0"/>
 	</rowConstraints>
-	<GridPane fx:id="grid" prefHeight="355.0" prefWidth="364.0">
+	<GridPane fx:id="letterGrid" prefHeight="355.0" prefWidth="364.0">
 		<columnConstraints>
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
 		</columnConstraints>
 		<rowConstraints>
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
 		</rowConstraints>
 		<GridPane.margin>
-			<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+			<Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
 		</GridPane.margin>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="   T'" wrappingWidth="42.078125" GridPane.columnIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="   T'" wrappingWidth="42.078125"
+		      GridPane.columnIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="S" GridPane.columnIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Z" GridPane.columnIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="F" GridPane.columnIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="U" GridPane.columnIndex="5" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="U" GridPane.columnIndex="5"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="6" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="6"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="7" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="7"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="8" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="8"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" GridPane.columnIndex="4" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" GridPane.columnIndex="4"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="3" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="3"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="1" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="1"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="9" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="9"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="10" GridPane.rowIndex="1">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="10"
+		      GridPane.rowIndex="1">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.columnIndex="1" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.columnIndex="1"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="3" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="3"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="4" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="4"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="5" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="5"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="6" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="6"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="F" GridPane.columnIndex="7" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="F" GridPane.columnIndex="7"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="8" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="8"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="9" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="9"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="10" GridPane.rowIndex="2">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="10"
+		      GridPane.rowIndex="2">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="1" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="1"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="2" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="2"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="3" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="3"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="4" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="4"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="5" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="5"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="P" GridPane.columnIndex="6" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="P" GridPane.columnIndex="6"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="7" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="7"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="S" GridPane.columnIndex="8" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="S" GridPane.columnIndex="8"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="9" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="9"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="J" GridPane.columnIndex="10" GridPane.rowIndex="3">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="J" GridPane.columnIndex="10"
+		      GridPane.rowIndex="3">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="P" GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="S" GridPane.columnIndex="1" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="S" GridPane.columnIndex="1"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="3" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="3"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="4" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="4"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="5" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="5"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="6" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="6"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="7" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="7"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="8" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="8"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="9" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="9"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="10" GridPane.rowIndex="4">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="10"
+		      GridPane.rowIndex="4">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="K" GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="B" GridPane.columnIndex="1" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="B" GridPane.columnIndex="1"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="2" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="2"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="3" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="3"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="4" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="4"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="5" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="5"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.columnIndex="6" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.columnIndex="6"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="D" GridPane.columnIndex="7" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="D" GridPane.columnIndex="7"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="8" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="A" GridPane.columnIndex="8"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="9" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" GridPane.columnIndex="9"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="10" GridPane.rowIndex="5">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="10"
+		      GridPane.rowIndex="5">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="M" GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="1" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="1"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="D" GridPane.columnIndex="2" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="D" GridPane.columnIndex="2"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="3" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="3"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="4" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="4"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="G" GridPane.columnIndex="5" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="G" GridPane.columnIndex="5"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="6" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="6"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="7" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="7"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="8" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="8"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="9" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="9"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="10" GridPane.rowIndex="6">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="10"
+		      GridPane.rowIndex="6">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="F" GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="1" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="1"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="2" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="2"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="3" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="3"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="4" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="4"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="5" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="5"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="6" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="6"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="7" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="7"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="8" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="8"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.columnIndex="9" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="W" GridPane.columnIndex="9"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="10" GridPane.rowIndex="7">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="10"
+		      GridPane.rowIndex="7">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="F" GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="1" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="1"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="1" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="1"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="1" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="1"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="2"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="U" GridPane.columnIndex="2" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="U" GridPane.columnIndex="2"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="3" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="V" GridPane.columnIndex="3"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="S" GridPane.columnIndex="3" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="S" GridPane.columnIndex="3"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="3" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="3"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="4" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="4"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="4" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="4"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Z" GridPane.columnIndex="4" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="Z" GridPane.columnIndex="4"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="K" GridPane.columnIndex="10" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="K" GridPane.columnIndex="10"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="10" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="10"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="10" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="10"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="  O'" wrappingWidth="35.677734375" GridPane.columnIndex="5" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="  O'" wrappingWidth="35.677734375"
+		      GridPane.columnIndex="5" GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="C" GridPane.columnIndex="6" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="C" GridPane.columnIndex="6"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="X" GridPane.columnIndex="5" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="X" GridPane.columnIndex="5"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="5" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="N" GridPane.columnIndex="5"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="6" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="6"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="7" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="I" GridPane.columnIndex="7"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="G" GridPane.columnIndex="8" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="G" GridPane.columnIndex="8"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="9" GridPane.rowIndex="8">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="9"
+		      GridPane.rowIndex="8">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="6" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="T" GridPane.columnIndex="6"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="7" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="H" GridPane.columnIndex="7"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="8" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="R" GridPane.columnIndex="8"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="9" GridPane.rowIndex="9">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="E" GridPane.columnIndex="9"
+		      GridPane.rowIndex="9">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="7" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="L" GridPane.columnIndex="7"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="8" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="O" GridPane.columnIndex="8"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="C" GridPane.columnIndex="9" GridPane.rowIndex="10">
+		<Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="C" GridPane.columnIndex="9"
+		      GridPane.rowIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
-		<Text fx:id="closeLabel" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="✖" GridPane.columnIndex="10">
+		<Text fx:id="closeLabel" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" text="✖"
+		      GridPane.columnIndex="10">
 			<font>
-				<Font size="20.0" />
+				<Font size="20.0"/>
 			</font>
 		</Text>
 	</GridPane>

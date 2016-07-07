@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Main program.
+ */
 public class ClockApp extends Application
 {
 	public static ClockHeartbeat heartbeat;

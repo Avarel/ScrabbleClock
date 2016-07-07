@@ -1,6 +1,10 @@
 package com.gmail.hexragonat.clockGadget;
 
-
+/**
+ * Stores state and location of letters
+ * corresponding to the clock's words.
+ * @see ClockController
+ */
 public enum WordEnum
 {
 	$_ITS(

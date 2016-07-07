@@ -11,6 +11,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Controller class for the JavaFX program.
+ * @see ClockApp
+ */
 public class ClockController
 {
 	private static ClockController instance;
@@ -19,16 +23,19 @@ public class ClockController
 	@FXML
 	protected GridPane root;
 	@FXML
+	protected GridPane letterGrid;
+	@FXML
 	protected Text closeLabel;
 
 	private final String offColor = "#333333ff";
 	private final String onColor = "#1a75ffff";
 
-	@FXML
-	protected GridPane grid;
 	private double xOffset = 0;
 	private double yOffset = 0;
 
+	/*
+	 * Dependency injection.
+	 */
 	public ClockController(Stage stage)
 	{
 		this.stage = stage;
@@ -37,6 +44,9 @@ public class ClockController
 
 	public void setup()
 	{
+		/*
+		 * Stage dragging property.
+		 */
 		root.setOnMousePressed(event ->
 		{
 			xOffset = event.getSceneX();
@@ -50,6 +60,9 @@ public class ClockController
 			finalStage.setY(event.getScreenY() - yOffset);
 		});
 
+		/*
+		 * Close button handling.
+		 */
 		closeLabel.setOnMouseEntered(event ->
 		{
 			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf("#333333"), Color.valueOf("#990000"));
@@ -72,9 +85,12 @@ public class ClockController
 		});
 	}
 
-	private Node nodeOfGrid(Integer x, Integer y)
+	/**
+	 * Grab a letter from the letter grid.
+	 */
+	private Text letterAt(Integer x, Integer y)
 	{
-		for (Node node : grid.getChildren())
+		for (Node node : letterGrid.getChildren())
 		{
 			Integer columnIndex = GridPane.getColumnIndex(node);
 			if (columnIndex == null) columnIndex = 0;
@@ -84,25 +100,16 @@ public class ClockController
 
 			if (columnIndex.equals(x) && rowIndex.equals(y))
 			{
-				return node;
+				return ((Text) node);
 			}
 		}
 		return null;
 	}
 
-//    public void toggle(WordEnum node)
-//    {
-//        if (node != null)
-//        if (node.isActive())
-//        {
-//            toggle(node, false);
-//        }
-//        else
-//        {
-//            toggle(node, true);
-//        }
-//    }
-
+	/**
+	 * Toggle the clock's letters by the words.
+	 * @see WordEnum
+	 */
 	public void toggle(WordEnum wordEnum, boolean bool)
 	{
 		if (wordEnum != null)
@@ -112,6 +119,9 @@ public class ClockController
 				int i = 0;
 				int max = wordEnum.size;
 
+				/*
+				 * Overlapping words.
+				 */
 				if (wordEnum == WordEnum.M_TWENTYFIVE && (WordEnum.M_TWENTY.isActive() || WordEnum.M_FIVE.isActive()))
 				{
 					if (WordEnum.M_TWENTY.isActive()) i = 6;
@@ -124,7 +134,7 @@ public class ClockController
 
 				for (; i < max; i++)
 				{
-					Text node = ((Text) ClockController.instance.nodeOfGrid(wordEnum.xOf[i], wordEnum.yOf[i]));
+					Text node = ClockController.instance.letterAt(wordEnum.xOf[i], wordEnum.yOf[i]);
 
 					if (node != null)
 					{
@@ -162,6 +172,9 @@ public class ClockController
 		}
 	}
 
+	/*
+	 * Turn all letters off.
+	 */
 	private void clearAll()
 	{
 		for (WordEnum enum0 : WordEnum.values())
