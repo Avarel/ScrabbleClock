@@ -1,5 +1,6 @@
 package com.gmail.hexragonat.clockGadget;
 
+import com.gmail.hexragonat.clockGadget.controller.MainController;
 import javafx.application.Platform;
 
 import java.util.Calendar;
@@ -8,18 +9,18 @@ import java.util.concurrent.*;
 /**
  * Background heartbeat that grabs the time and
  * updates the main interface.
- * @see ClockController
+ * @see MainController
  */
 public class ClockHeartbeat implements Runnable
 {
-	protected final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
-	private final ClockController controller;
+	public final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+	private final MainController controller;
 
 	private ScheduledFuture<?> task;
 
-	ClockHeartbeat(ClockController controller)
+	ClockHeartbeat(ClockApp app)
 	{
-		this.controller = controller;
+		this.controller = app.controller;
 	}
 
 	public void start()
@@ -35,20 +36,17 @@ public class ClockHeartbeat implements Runnable
 	@Override
 	public void run()
 	{
-		@SuppressWarnings("unchecked")
-		FutureTask updateUITask = new FutureTask(() ->
+		Platform.runLater(() ->
 		{
 			//controller.clearAll();
 			Calendar now = Calendar.getInstance();
 			//now.set(Calendar.MINUTE, new Random().nextInt(60));
-			//now.set(Calendar.HOUR, 12);
-			//now.set(Calendar.MINUTE, 25);
+			//now.set(Calendar.HOUR, 6);
+			//now.set(Calendar.MINUTE, 0);
 			//now.set(Calendar.AM_PM, Calendar.PM);
 
 			consume(now);
-		}, null);
-
-		Platform.runLater(updateUITask);
+		});
 	}
 
 	private void consume(Calendar now)
@@ -182,7 +180,7 @@ public class ClockHeartbeat implements Runnable
 		//disable all stuff that will be disabled
 		for (WordEnum enum0 : WordEnum.values())
 		{
-			if (!(enum0 == minuteEnum || enum0 == hourEnum || enum0 == progressEnum || enum0 == WordEnum.$_ITS))
+			if (enum0.isActive() && !(enum0 == minuteEnum || enum0 == hourEnum || enum0 == progressEnum || enum0 == WordEnum.$_ITS))
 			{
 				controller.toggle(enum0, false);
 			}
@@ -193,20 +191,16 @@ public class ClockHeartbeat implements Runnable
 		final WordEnum finalHourEnum = hourEnum;
 		final WordEnum finalProgressEnum = progressEnum;
 		exec.schedule(() ->
-		{
-			@SuppressWarnings("unchecked")
-			FutureTask toggleOnTask = new FutureTask(() ->
-			{
-				for (WordEnum enum0 : WordEnum.values())
+				Platform.runLater(() ->
 				{
-					if (enum0 == finalMinuteEnum || enum0 == finalHourEnum || enum0 == finalProgressEnum || enum0 == WordEnum.$_ITS)
+					for (WordEnum enum0 : WordEnum.values())
 					{
-						if (!enum0.isActive()) controller.toggle(enum0, true);
+						if (!enum0.isActive() && (enum0 == finalMinuteEnum || enum0 == finalHourEnum || enum0 == finalProgressEnum || enum0 == WordEnum.$_ITS))
+						{
+							controller.toggle(enum0, true);
+						}
 					}
-				}
-			}, null);
-			Platform.runLater(toggleOnTask);
-		}, 1, TimeUnit.SECONDS); //so animations won't overlap and cause weird stuff
+				}), 1, TimeUnit.SECONDS); //so animations won't overlap and cause weird stuff
 
 		//System.out.println(minuteEnum +"\t\t"+ progressEnum +"\t\t"+ hourEnum);
 	}

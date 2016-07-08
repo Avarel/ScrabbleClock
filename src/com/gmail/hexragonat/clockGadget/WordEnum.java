@@ -1,9 +1,11 @@
 package com.gmail.hexragonat.clockGadget;
 
+import com.gmail.hexragonat.clockGadget.controller.MainController;
+
 /**
  * Stores state and location of letters
  * corresponding to the clock's words.
- * @see ClockController
+ * @see MainController
  */
 public enum WordEnum
 {
@@ -84,9 +86,9 @@ public enum WordEnum
 			new int[]{5, 6, 7, 8, 9, 10},
 			new int[]{10, 10, 10, 10, 10, 10});
 
-	final int size;
-	final int[] xOf;
-	final int[] yOf;
+	public final int size;
+	public final int[] xOf;
+	public final int[] yOf;
 	private boolean active = false;
 
 	WordEnum(int[] xOf, int[] yOf)

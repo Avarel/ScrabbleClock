@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="134.0"
+          style="-fx-background-color: #262626;" xmlns="http://javafx.com/javafx/8.0.60">
+	<columnConstraints>
+		<ColumnConstraints/>
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints maxHeight="300.0" minHeight="300.0" prefHeight="300.0"/>
+	</rowConstraints>
+	<AnchorPane prefHeight="300.0" prefWidth="134.0" GridPane.columnIndex="0">
+		<GridPane layoutX="10.0" layoutY="71.0" prefHeight="215.0" prefWidth="114.0" AnchorPane.bottomAnchor="14.0"
+		          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="71.0">
+			<columnConstraints>
+				<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES"/>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+				<RowConstraints minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES"/>
+				<RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES"/>
+			</rowConstraints>
+			<JFXColorPicker fx:id="offLettersCP" prefWidth="100.0" GridPane.rowIndex="3"/>
+			<JFXColorPicker fx:id="backgroundCP" prefWidth="100.0" GridPane.rowIndex="5"/>
+			<JFXColorPicker fx:id="onLettersCP" prefWidth="100.0" GridPane.rowIndex="1"/>
+			<Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Enabled Letters"
+			      textAlignment="CENTER">
+				<font>
+					<Font size="15.0"/>
+				</font>
+			</Text>
+			<Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Disabled Letters"
+			      textAlignment="CENTER" GridPane.rowIndex="2">
+				<font>
+					<Font size="15.0"/>
+				</font>
+			</Text>
+			<Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Background" textAlignment="CENTER"
+			      GridPane.rowIndex="4">
+				<font>
+					<Font size="15.0"/>
+				</font>
+			</Text>
+			<JFXButton onAction="#resetColors" prefWidth="100.0" style="-fx-background-color: WHITE;"
+			           text="Reset" GridPane.rowIndex="7"/>
+		</GridPane>
+		<ImageView fitHeight="73.0" fitWidth="57.0" layoutX="39.0" layoutY="14.0" pickOnBounds="true"
+		           preserveRatio="true">
+			<Image url="@../files/icon.png"/>
+		</ImageView>
+	</AnchorPane>
+</GridPane>

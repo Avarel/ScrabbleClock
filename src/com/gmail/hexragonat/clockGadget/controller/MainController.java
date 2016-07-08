@@ -1,6 +1,10 @@
-package com.gmail.hexragonat.clockGadget;
+package com.gmail.hexragonat.clockGadget.controller;
 
+import com.gmail.hexragonat.clockGadget.ClockApp;
+import com.gmail.hexragonat.clockGadget.WordEnum;
+import com.jfoenix.controls.JFXDrawer;
 import javafx.animation.FillTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.effect.Glow;
@@ -13,15 +17,17 @@ import javafx.util.Duration;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Controller class for the JavaFX program.
  * @see ClockApp
  */
-public class ClockController
+public class MainController
 {
-	private static ClockController instance;
+	private final ClockApp app;
 	private final Stage stage;
+
 
 	@FXML
 	protected GridPane root;
@@ -29,6 +35,11 @@ public class ClockController
 	protected GridPane letterGrid;
 	@FXML
 	protected Text closeLabel;
+	@FXML
+	protected Text settingsLabel;
+	@FXML
+	public JFXDrawer sidebar;
+
 
 	private String offColor = "#333333";
 	private String onColor = "#1a75ff";
@@ -39,10 +50,10 @@ public class ClockController
 	/*
 	 * Dependency injection.
 	 */
-	public ClockController(Stage stage)
+	public MainController(ClockApp app)
 	{
-		this.stage = stage;
-		instance = this;
+		this.app = app;
+		this.stage = app.stage;
 	}
 
 	public void setOnColor(String onColor)
@@ -78,7 +89,7 @@ public class ClockController
 			finalStage.setY(event.getScreenY() - yOffset);
 		});
 
-		root.setOnMouseEntered(event -> setClockField());
+		root.setOnMouseEntered(event -> setClockField(null));
 		root.setOnMouseExited(event -> resetClockField());
 
 		/*
@@ -86,55 +97,80 @@ public class ClockController
 		 */
 		closeLabel.setOnMouseEntered(event ->
 		{
-			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf(offColor), Color.valueOf("#990000"));
+			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf(offColor), Color.valueOf(onColor).brighter());
 			ft.play();
 
-			closeLabel.setFill(Paint.valueOf("#990000"));
+			setClockField(" CLOSE ");
 		});
 		closeLabel.setOnMouseExited(event ->
 		{
-			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf("#990000"), Color.valueOf(offColor));
+			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf(onColor).brighter(), Color.valueOf(offColor));
 			ft.play();
 
-			closeLabel.setFill(Paint.valueOf("#333333"));
+			setClockField(null);
 		});
 		closeLabel.setOnMouseClicked(event ->
 		{
-			ClockApp.heartbeat.stop();
+			app.heartbeat.stop();
 			stage.close();
+			app.settingsManager.save();
 			System.exit(0);
 		});
 
-		// set all of letters color to off color
-		for (int x = 0; x <= 10; x++)
+		settingsLabel.setOnMouseEntered(event ->
 		{
-			for (int y = 0; y <= 10; y++)
+			FillTransition ft = new FillTransition(Duration.millis(200), settingsLabel, Color.valueOf(offColor), Color.valueOf(onColor).brighter());
+			ft.play();
+			setClockField("OPTIONS");
+		});
+		settingsLabel.setOnMouseExited(event ->
+		{
+			FillTransition ft = new FillTransition(Duration.millis(200), settingsLabel, Color.valueOf(onColor).brighter(), Color.valueOf(offColor));
+			ft.play();
+
+			if (WordEnum.P_OCLOCK.isActive())
 			{
-				Text node = ClockController.instance.letterAt(x, y);
-				if (node != null)
-				{
-					node.setFill(Paint.valueOf(offColor));
-					node.setEffect(null);
-				}
+				FillTransition ft0 = new FillTransition(Duration.millis(200), settingsLabel, Color.valueOf(offColor), Color.valueOf(onColor));
+				ft0.play();
 			}
-		}
+
+			setClockField(null);
+		});
+		settingsLabel.setOnMouseClicked(event ->
+		{
+			System.out.println(sidebar.isHidden());
+			if (sidebar.isHidden()) sidebar.open();
+			else sidebar.close();
+		});
+
+
+		resetAll();
 	}
 
-	public void setClockField()
+	public void setClockField(String string)
 	{
-		SimpleDateFormat formatter = new SimpleDateFormat("hh:mma");
-		String formattedDate = formatter.format(new Date());
+		if (string == null || string.isEmpty())
+		{
+			SimpleDateFormat formatter = new SimpleDateFormat("hh:mma");
+			string = formatter.format(new Date());
+		}
 
 		for (int i = 0; i < 7; i++)
 		{
-			Text node = letterAt(i+2,5);
+			final int finalI = i;
+			final String finalString = string;
+			app.heartbeat.exec.schedule(() ->
+					Platform.runLater(() ->
+					{
+						Text node = letterAt(finalI +2,5);
 
-			if (node != null)
-			{
-				node.setStyle("-fx-font-weight: bold");
-				node.setFill(Paint.valueOf("#2c2c2c"));
-				node.setText(String.valueOf(formattedDate.charAt(i)));
-			}
+						if (node != null)
+						{
+							node.setStyle("-fx-font-weight: bold");
+							node.setFill(Paint.valueOf(Color.valueOf(onColor).brighter().toString()));
+							node.setText(String.valueOf(finalString.charAt(finalI)));
+						}
+					}), 50 * (i+1), TimeUnit.MILLISECONDS);
 		}
 	}
 
@@ -144,14 +180,19 @@ public class ClockController
 
 		for (int i = 0; i < 7; i++)
 		{
-			Text node = letterAt(i+2,5);
+			final int finalI = i;
+			app.heartbeat.exec.schedule(() ->
+					Platform.runLater(() ->
+					{
+						Text node = letterAt(finalI+2,5);
 
-			if (node != null)
-			{
-				node.setStyle(null);
-				node.setFill(Paint.valueOf(offColor));
-				node.setText(String.valueOf(original.charAt(i)));
-			}
+						if (node != null)
+						{
+							node.setStyle(null);
+							node.setFill(Paint.valueOf(offColor));
+							node.setText(String.valueOf(original.charAt(finalI)));
+						}
+					}), 50 * (i+1), TimeUnit.MILLISECONDS);
 		}
 	}
 
@@ -204,7 +245,7 @@ public class ClockController
 
 				for (; i < max; i++)
 				{
-					Text node = ClockController.instance.letterAt(wordEnum.xOf[i], wordEnum.yOf[i]);
+					Text node = letterAt(wordEnum.xOf[i], wordEnum.yOf[i]);
 
 					if (node != null)
 					{
@@ -244,11 +285,28 @@ public class ClockController
 	/*
 	 * Turn all letters off.
 	 */
-	private void clearAll()
+	protected void clearAll()
 	{
 		for (WordEnum enum0 : WordEnum.values())
 		{
 			toggle(enum0, false);
+		}
+	}
+
+	protected void resetAll()
+	{
+		// set all of letters color to off color
+		for (int x = 0; x <= 10; x++)
+		{
+			for (int y = 0; y <= 10; y++)
+			{
+				Text node = letterAt(x, y);
+				if (node != null)
+				{
+					node.setFill(Paint.valueOf(offColor));
+					node.setEffect(null);
+				}
+			}
 		}
 	}
 

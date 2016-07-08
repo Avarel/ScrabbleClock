@@ -1,9 +1,6 @@
 package com.gmail.hexragonat.clockGadget.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Properties;
@@ -11,26 +8,32 @@ import java.util.Properties;
 public class PropertiesManager
 {
     private Properties prop;
-    private File file;
+    private Properties defaultProp;
+    public File file;
+    public final String path;
     public final String fileName;
+    public final Object anchor;
 
-    public PropertiesManager(String s)
+    public PropertiesManager(Object anchor, String path, String fileName)
     {
-        fileName = s;
+        this.anchor = anchor;
+        this.path = path;
+        this.fileName = fileName;
     }
 
     public void load()
     {
-        load(this.file, this.getClass().getResourceAsStream(fileName));
+        load(this.file, anchor.getClass().getResourceAsStream(this.path));
     }
 
     public void load(File file, InputStream is)
     {
         try
         {
+            System.out.println(is);
             if (file == null)
             {
-                file = new File("data"+File.separator+fileName);
+                file = new File(fileName);
 
                 if (!file.exists())
                 {
@@ -68,11 +71,68 @@ public class PropertiesManager
         }
     }
 
+    public void setDefault(InputStream is)
+    {
+        try
+        {
+            defaultProp = new Properties();
+            defaultProp.load(is);
+            is.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public String get(String key, Object... obj)
     {
         if (prop == null) return "PropertyManager error!";
         String s = prop.getProperty(key);
+
+        if (s == null)
+        {
+            if (defaultProp != null)
+            {
+                String def = defaultProp.getProperty(key);
+                if (def != null)
+                {
+                    return def;
+                }
+            }
+            return null;
+        }
+
         if (obj.length > 0) s = String.format(s, obj);
         return s;
+    }
+
+    public String getDefault(String key)
+    {
+        return defaultProp.getProperty(key);
+    }
+
+    public void set(String key, String value)
+    {
+        prop.setProperty(key, value);
+    }
+
+    public void save()
+    {
+        if (file == null)
+        {
+            System.out.println("No file found to save to!");
+        }
+        OutputStream out;
+        try
+        {
+            out = new FileOutputStream(file);
+            prop.store(out, null);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }
