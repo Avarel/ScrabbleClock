@@ -180,6 +180,7 @@ public class MainController
 							node.setStyle("-fx-font-weight: bold");
 							node.setFill(Paint.valueOf(Color.valueOf(onColor).brighter().toString()));
 							node.setText(String.valueOf(finalString.charAt(finalI)));
+							node.setEffect(new Glow(1.0));
 						}
 					}), 50 * (i+1), TimeUnit.MILLISECONDS);
 		}
@@ -203,6 +204,7 @@ public class MainController
 							node.setStyle(null);
 							node.setFill(Paint.valueOf(offColor));
 							node.setText(String.valueOf(original.charAt(finalI)));
+							node.setEffect(null);
 						}
 					}), 50 * (i+1), TimeUnit.MILLISECONDS);
 		}

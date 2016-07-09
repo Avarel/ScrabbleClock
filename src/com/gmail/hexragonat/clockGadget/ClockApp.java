@@ -12,6 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
+
 /**
  * Main program.
  */
@@ -46,7 +48,7 @@ public class ClockApp extends Application
 		stage.setScene(new Scene(root));
 		stage.initStyle(StageStyle.UNDECORATED);
 		stage.getIcons().add(new Image(this.getClass().getResourceAsStream("files/icon.png")));
-
+		resetStagePosition();
 
 		// loading and setting sidebar
 		FXMLLoader loader0 = new FXMLLoader(getClass().getResource("fxml/settings.fxml"));
@@ -74,6 +76,15 @@ public class ClockApp extends Application
 		getHeartbeat().start();
 
 		stage.show();
+	}
+
+	public void resetStagePosition()
+	{
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int desktopWidth = gd.getDisplayMode().getWidth();
+
+		stage.setX(desktopWidth - 320);
+		stage.setY(20);
 	}
 
 	public Stage getStage()

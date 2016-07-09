@@ -3,11 +3,16 @@ package com.gmail.hexragonat.clockGadget.controller;
 import com.gmail.hexragonat.clockGadget.ClockApp;
 import com.jfoenix.controls.JFXColorPicker;
 import javafx.fxml.FXML;
+import javafx.scene.effect.Glow;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class SettingsController
 {
 	private final ClockApp app;
+
+	@FXML
+	protected ImageView icon;
 
 	@FXML
 	protected JFXColorPicker onLettersCP;
@@ -33,7 +38,7 @@ public class SettingsController
 		app.getMainController().setOffColor(colorToHex(offLettersCP.getValue()));
 		app.getMainController().setBackgroundColor(colorToHex(backgroundCP.getValue()));
 
-		onLettersCP.setOnAction((event) ->
+		onLettersCP.setOnAction(event ->
 		{
 			app.getMainController().clearAll();
 			app.getMainController().setOnColor(colorToHex(onLettersCP.getValue()));
@@ -41,7 +46,7 @@ public class SettingsController
 			app.getSettingsManager().set("letter-enabled-color", colorToHex(onLettersCP.getValue()));
 		});
 
-		offLettersCP.setOnAction((event) ->
+		offLettersCP.setOnAction(event ->
 		{
 			app.getMainController().clearAll();
 			app.getMainController().setOffColor(colorToHex(offLettersCP.getValue()));
@@ -50,11 +55,28 @@ public class SettingsController
 			app.getSettingsManager().set("letter-disabled-color", colorToHex(offLettersCP.getValue()));
 		});
 
-		backgroundCP.setOnAction((event) ->
+		backgroundCP.setOnAction(event ->
 		{
 			app.getMainController().setBackgroundColor(colorToHex(backgroundCP.getValue()));
 
 			app.getSettingsManager().set("background-color", colorToHex(backgroundCP.getValue()));
+		});
+
+		icon.setOnMouseEntered(event -> icon.setEffect(new Glow(0.5)));
+		icon.setOnMouseExited(event -> icon.setEffect(app.getStage().isAlwaysOnTop() ? new Glow(1.0): null));
+
+		icon.setOnMouseClicked(event ->
+		{
+			if (app.getStage().isAlwaysOnTop())
+			{
+				app.getStage().setAlwaysOnTop(false);
+				icon.setEffect(null);
+			}
+			else
+			{
+				app.getStage().setAlwaysOnTop(true);
+				icon.setEffect(new Glow(1.0));
+			}
 		});
 
 		app.getMainController().resetAll();
