@@ -25,37 +25,39 @@ public class SettingsController
 
 	public void setup()
 	{
-		onLettersCP.setValue(Color.valueOf(app.settingsManager.get("letter-enabled-color")));
-		offLettersCP.setValue(Color.valueOf(app.settingsManager.get("letter-disabled-color")));
-		backgroundCP.setValue(Color.valueOf(app.settingsManager.get("background-color")));
+		onLettersCP.setValue(Color.valueOf(app.getSettingsManager().get("letter-enabled-color")));
+		offLettersCP.setValue(Color.valueOf(app.getSettingsManager().get("letter-disabled-color")));
+		backgroundCP.setValue(Color.valueOf(app.getSettingsManager().get("background-color")));
 
-		app.controller.setOnColor(colorToHex(onLettersCP.getValue()));
-		app.controller.setOffColor(colorToHex(offLettersCP.getValue()));
-		app.controller.setBackgroundColor(colorToHex(backgroundCP.getValue()));
+		app.getMainController().setOnColor(colorToHex(onLettersCP.getValue()));
+		app.getMainController().setOffColor(colorToHex(offLettersCP.getValue()));
+		app.getMainController().setBackgroundColor(colorToHex(backgroundCP.getValue()));
 
 		onLettersCP.setOnAction((event) ->
 		{
-			app.controller.clearAll();
-			app.controller.setOnColor(colorToHex(onLettersCP.getValue()));
+			app.getMainController().clearAll();
+			app.getMainController().setOnColor(colorToHex(onLettersCP.getValue()));
 
-			app.settingsManager.set("letter-enabled-color", colorToHex(onLettersCP.getValue()));
+			app.getSettingsManager().set("letter-enabled-color", colorToHex(onLettersCP.getValue()));
 		});
 
 		offLettersCP.setOnAction((event) ->
 		{
-			app.controller.clearAll();
-			app.controller.setOffColor(colorToHex(offLettersCP.getValue()));
-			app.controller.resetAll();
+			app.getMainController().clearAll();
+			app.getMainController().setOffColor(colorToHex(offLettersCP.getValue()));
+			app.getMainController().resetAll();
 
-			app.settingsManager.set("letter-disabled-color", colorToHex(offLettersCP.getValue()));
+			app.getSettingsManager().set("letter-disabled-color", colorToHex(offLettersCP.getValue()));
 		});
 
 		backgroundCP.setOnAction((event) ->
 		{
-			app.controller.setBackgroundColor(colorToHex(backgroundCP.getValue()));
+			app.getMainController().setBackgroundColor(colorToHex(backgroundCP.getValue()));
 
-			app.settingsManager.set("background-color", colorToHex(backgroundCP.getValue()));
+			app.getSettingsManager().set("background-color", colorToHex(backgroundCP.getValue()));
 		});
+
+		app.getMainController().resetAll();
 	}
 
 	public String colorToHex(Color color)
@@ -65,20 +67,20 @@ public class SettingsController
 
 	public void resetColors()
 	{
-		app.controller.clearAll();
+		app.getMainController().clearAll();
 
-		app.settingsManager.set("letter-enabled-color", app.settingsManager.getDefault("letter-enabled-color"));
-		app.settingsManager.set("letter-disabled-color", app.settingsManager.getDefault("letter-disabled-color"));
-		app.settingsManager.set("background-color", app.settingsManager.getDefault("background-color"));
+		app.getSettingsManager().set("letter-enabled-color", app.getSettingsManager().getDefault("letter-enabled-color"));
+		app.getSettingsManager().set("letter-disabled-color", app.getSettingsManager().getDefault("letter-disabled-color"));
+		app.getSettingsManager().set("background-color", app.getSettingsManager().getDefault("background-color"));
 
-		onLettersCP.setValue(Color.valueOf(app.settingsManager.get("letter-enabled-color")));
-		offLettersCP.setValue(Color.valueOf(app.settingsManager.get("letter-disabled-color")));
-		backgroundCP.setValue(Color.valueOf(app.settingsManager.get("background-color")));
+		onLettersCP.setValue(Color.valueOf(app.getSettingsManager().get("letter-enabled-color")));
+		offLettersCP.setValue(Color.valueOf(app.getSettingsManager().get("letter-disabled-color")));
+		backgroundCP.setValue(Color.valueOf(app.getSettingsManager().get("background-color")));
 
-		app.controller.setOnColor(colorToHex(onLettersCP.getValue()));
-		app.controller.setOffColor(colorToHex(offLettersCP.getValue()));
-		app.controller.setBackgroundColor(colorToHex(backgroundCP.getValue()));
+		app.getMainController().setOnColor(colorToHex(onLettersCP.getValue()));
+		app.getMainController().setOffColor(colorToHex(offLettersCP.getValue()));
+		app.getMainController().setBackgroundColor(colorToHex(backgroundCP.getValue()));
 
-		app.controller.resetAll();
+		app.getMainController().resetAll();
 	}
 }

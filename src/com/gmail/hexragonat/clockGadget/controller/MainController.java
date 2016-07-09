@@ -38,7 +38,7 @@ public class MainController
 	@FXML
 	protected Text settingsLabel;
 	@FXML
-	public JFXDrawer sidebar;
+	protected JFXDrawer sidebar;
 
 
 	private String offColor = "#333333";
@@ -53,7 +53,7 @@ public class MainController
 	public MainController(ClockApp app)
 	{
 		this.app = app;
-		this.stage = app.stage;
+		this.stage = app.getStage();
 	}
 
 	public void setOnColor(String onColor)
@@ -92,6 +92,12 @@ public class MainController
 		root.setOnMouseEntered(event -> setClockField(null));
 		root.setOnMouseExited(event -> resetClockField());
 
+		setupCloseLabel();
+		setupSettingsLabel();
+	}
+
+	private void setupCloseLabel()
+	{
 		/*
 		 * Close button handling.
 		 */
@@ -99,28 +105,32 @@ public class MainController
 		{
 			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf(offColor), Color.valueOf(onColor).brighter());
 			ft.play();
-
+			closeLabel.setEffect(new Glow(5.0));
 			setClockField(" CLOSE ");
 		});
 		closeLabel.setOnMouseExited(event ->
 		{
 			FillTransition ft = new FillTransition(Duration.millis(200), closeLabel, Color.valueOf(onColor).brighter(), Color.valueOf(offColor));
 			ft.play();
-
+			closeLabel.setEffect(null);
 			setClockField(null);
 		});
 		closeLabel.setOnMouseClicked(event ->
 		{
-			app.heartbeat.stop();
+			app.getHeartbeat().stop();
 			stage.close();
-			app.settingsManager.save();
+			app.getSettingsManager().save();
 			System.exit(0);
 		});
+	}
 
+	private void setupSettingsLabel()
+	{
 		settingsLabel.setOnMouseEntered(event ->
 		{
 			FillTransition ft = new FillTransition(Duration.millis(200), settingsLabel, Color.valueOf(offColor), Color.valueOf(onColor).brighter());
 			ft.play();
+			settingsLabel.setEffect(new Glow(5.0));
 			setClockField("OPTIONS");
 		});
 		settingsLabel.setOnMouseExited(event ->
@@ -133,18 +143,19 @@ public class MainController
 				FillTransition ft0 = new FillTransition(Duration.millis(200), settingsLabel, Color.valueOf(offColor), Color.valueOf(onColor));
 				ft0.play();
 			}
+			else
+			{
+				settingsLabel.setEffect(null);
+			}
 
 			setClockField(null);
 		});
 		settingsLabel.setOnMouseClicked(event ->
 		{
-			System.out.println(sidebar.isHidden());
-			if (sidebar.isHidden()) sidebar.open();
-			else sidebar.close();
+			System.out.println(getSidebar().isHidden());
+			if (getSidebar().isHidden()) getSidebar().open();
+			else getSidebar().close();
 		});
-
-
-		resetAll();
 	}
 
 	public void setClockField(String string)
@@ -159,7 +170,7 @@ public class MainController
 		{
 			final int finalI = i;
 			final String finalString = string;
-			app.heartbeat.exec.schedule(() ->
+			app.getHeartbeat().getExecutor().schedule(() ->
 					Platform.runLater(() ->
 					{
 						Text node = letterAt(finalI +2,5);
@@ -176,12 +187,13 @@ public class MainController
 
 	public void resetClockField()
 	{
-		String original = "IRTHWDA";
+						//
+		String original = "EXRAGON";
 
 		for (int i = 0; i < 7; i++)
 		{
 			final int finalI = i;
-			app.heartbeat.exec.schedule(() ->
+			app.getHeartbeat().getExecutor().schedule(() ->
 					Platform.runLater(() ->
 					{
 						Text node = letterAt(finalI+2,5);
@@ -310,4 +322,8 @@ public class MainController
 		}
 	}
 
+	public JFXDrawer getSidebar()
+	{
+		return sidebar;
+	}
 }

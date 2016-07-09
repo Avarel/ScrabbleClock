@@ -17,10 +17,12 @@ import javafx.stage.StageStyle;
  */
 public class ClockApp extends Application
 {
-	public MainController controller;
-	public ClockHeartbeat heartbeat;
-	public Stage stage;
-	public PropertiesManager settingsManager;
+	private Stage stage;
+
+	private ClockHeartbeat heartbeat;
+	private MainController mainController;
+	private SettingsController settingsController;
+	private PropertiesManager settingsManager;
 
 	public static void main(String[] args)
 	{
@@ -32,42 +34,70 @@ public class ClockApp extends Application
 	{
 		this.stage = stage;
 
+		// loading main stuff
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/main.fxml"));
-		controller = new MainController(this);
-		loader.setController(controller);
+		mainController = new MainController(this);
+		loader.setController(getMainController());
 
 		Parent root = loader.load();
 
+		// meta stuff
 		stage.setTitle("Clock Gadget");
 		stage.setScene(new Scene(root));
 		stage.initStyle(StageStyle.UNDECORATED);
 		stage.getIcons().add(new Image(this.getClass().getResourceAsStream("files/icon.png")));
 
 
-
+		// loading and setting sidebar
 		FXMLLoader loader0 = new FXMLLoader(getClass().getResource("fxml/settings.fxml"));
-		SettingsController settingsController = new SettingsController(this);
-		loader0.setController(settingsController);
+		settingsController = new SettingsController(this);
+		loader0.setController(getSettingsController());
 
 		GridPane drawerPane = loader0.load();
-		controller.sidebar.setSidePane(drawerPane);
-		controller.sidebar.close();
+		getMainController().getSidebar().setSidePane(drawerPane);
+		getMainController().getSidebar().close();
 
 
 
 		// properties file
 		settingsManager = new PropertiesManager(this, "files/settings.properties", "ClockAppData/settings.properties");
 		//settingsManager.load(settingsManager.file, getClass().getResourceAsStream(settingsManager.path)); //getClass().getResourceAsStream(settingsManager.path)
-		settingsManager.load();
-		settingsManager.setDefault(getClass().getResourceAsStream(settingsManager.path));
+		getSettingsManager().load();
+		getSettingsManager().setDefault(getClass().getResourceAsStream(getSettingsManager().path));
 
 		// settings
-		settingsController.setup();
-		controller.setup();
+		getSettingsController().setup();
+		getMainController().setup();
 
+		// start app heartbeat
 		heartbeat = new ClockHeartbeat(this);
-		heartbeat.start();
+		getHeartbeat().start();
 
 		stage.show();
+	}
+
+	public Stage getStage()
+	{
+		return stage;
+	}
+
+	public ClockHeartbeat getHeartbeat()
+	{
+		return heartbeat;
+	}
+
+	public MainController getMainController()
+	{
+		return mainController;
+	}
+
+	public SettingsController getSettingsController()
+	{
+		return settingsController;
+	}
+
+	public PropertiesManager getSettingsManager()
+	{
+		return settingsManager;
 	}
 }

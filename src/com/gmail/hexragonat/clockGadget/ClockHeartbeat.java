@@ -13,19 +13,18 @@ import java.util.concurrent.*;
  */
 public class ClockHeartbeat implements Runnable
 {
-	public final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+	private final ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
 	private final MainController controller;
-
 	private ScheduledFuture<?> task;
 
 	ClockHeartbeat(ClockApp app)
 	{
-		this.controller = app.controller;
+		this.controller = app.getMainController();
 	}
 
 	public void start()
 	{
-		task = exec.scheduleAtFixedRate(this, 0, 5, TimeUnit.SECONDS);
+		task = getExecutor().scheduleAtFixedRate(this, 0, 5, TimeUnit.SECONDS);
 	}
 
 	public void stop()
@@ -190,7 +189,7 @@ public class ClockHeartbeat implements Runnable
 		final WordEnum finalMinuteEnum = minuteEnum;
 		final WordEnum finalHourEnum = hourEnum;
 		final WordEnum finalProgressEnum = progressEnum;
-		exec.schedule(() ->
+		getExecutor().schedule(() ->
 				Platform.runLater(() ->
 				{
 					for (WordEnum enum0 : WordEnum.values())
@@ -203,5 +202,10 @@ public class ClockHeartbeat implements Runnable
 				}), 1, TimeUnit.SECONDS); //so animations won't overlap and cause weird stuff
 
 		//System.out.println(minuteEnum +"\t\t"+ progressEnum +"\t\t"+ hourEnum);
+	}
+
+	public ScheduledExecutorService getExecutor()
+	{
+		return exec;
 	}
 }
