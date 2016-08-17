@@ -78,13 +78,15 @@ public class ClockApp extends Application
 		stage.show();
 	}
 
-	public void resetStagePosition()
+	private void resetStagePosition()
 	{
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		int desktopWidth = gd.getDisplayMode().getWidth();
 
 		stage.setX(desktopWidth - 320);
 		stage.setY(20);
+		
+		
 	}
 
 	public Stage getStage()
@@ -102,7 +104,7 @@ public class ClockApp extends Application
 		return mainController;
 	}
 
-	public SettingsController getSettingsController()
+	private SettingsController getSettingsController()
 	{
 		return settingsController;
 	}
